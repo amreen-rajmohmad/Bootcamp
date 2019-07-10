@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MaxHeap {
 
     private static int maxsize;
@@ -148,30 +150,64 @@ public class MaxHeap {
         System.out.println("max element is " +max);
     }
 
+    private  static void view()
+    {
+        for ( int i=0;i<MaxHeap.heap.length;i++)
+        {
+            System.out.println(MaxHeap.heap[i]);
+
+
+        }
+    }
+
+    private  static void user(Scanner input,MaxHeap a)
+    {
+
+        System.out.println("1 : Insert 2 : Delete/Pop 3:View 4:Exit ");
+        int number = input.nextInt();
+        if(number==1)
+        {
+            System.out.println("Enter number to be added :");
+            int number1 = input.nextInt();
+            a.insert(number1);
+        }
+        else if(number==2)
+        {
+            MaxHeap.popmax();
+        }
+        else if(number==3)
+        {
+            MaxHeap.view();
+        }
+        else if(number==4)
+        {
+            return;
+        }
+        user(input,a);
+
+    }
+
     public static void main(String[] args) {
-        MaxHeap a = new MaxHeap(20);
-        a.insert(4);
-        a.insert(20);
-        a.insert(5);
-        a.insert(3);
-        a.insert(2);
-        a.insert(7);
-        a.insert(10);
-        a.insert(90);
 
-        for ( int i=0;i<MaxHeap.heap.length;i++)
-        {
-            System.out.println(MaxHeap.heap[i]);
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the max size of Heap :");
+        int p = input.nextInt();
+        MaxHeap a = new MaxHeap(p);
+//        a.insert(4);
+//        a.insert(20);
+//        a.insert(5);
+//        a.insert(3);
+//        a.insert(2);
+//        a.insert(7);
+//        a.insert(10);
+//        a.insert(90);
+//
+//        MaxHeap.view();
+//        popmax();
+//        MaxHeap.view();
 
+        MaxHeap.user(input, a);
 
-        }
-        popmax();
-        for ( int i=0;i<MaxHeap.heap.length;i++)
-        {
-            System.out.println(MaxHeap.heap[i]);
-
-
-        }
 
     }
 }
